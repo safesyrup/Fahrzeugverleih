@@ -28,6 +28,7 @@ public class Controller {
         switch (readLine()) {
             case "1":
                 vehiclepark.printVehicles();
+                vehicleSubMenu();
                 break;
             case "2":
                 addVehicleSubMenu();
@@ -53,7 +54,7 @@ public class Controller {
                 vehiclepark.addVehicle("motorcycle");
                 break;
             case "3":
-                //add van
+                vehiclepark.addVehicle("van");
                 break;
             case "0":
                 addVehicleSubMenu();
@@ -61,8 +62,11 @@ public class Controller {
         }
     }
 
-    public void mainMenu() throws IOException {
+    public void rentSubmenu() {
 
+    }
+
+    public void mainMenu() throws IOException {
         System.out.println("----------------------------------");
         System.out.println("Willkommen zur Fahrzeugverwaltung");
         System.out.println("----------------------------------");
@@ -75,7 +79,6 @@ public class Controller {
     }
 
     public void vehicleSubMenu() throws IOException {
-
         System.out.println("Fahrzeugpark");
         System.out.println("1 Fahrzeuge ansehen");
         System.out.println("2 Fahrzeuge hinzufügen");
@@ -86,7 +89,6 @@ public class Controller {
     }
 
     public void addVehicleSubMenu() throws IOException {
-
         System.out.println("Welche Art von Fahrzeug hinzufügen");
         System.out.println("1 Auto");
         System.out.println("2 Mottorrad");
@@ -94,5 +96,13 @@ public class Controller {
         System.out.println("0 zurück");
 
         chooseAddVehicleSubMenu();
+    }
+
+    public void rentSubMenu() {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
     }
 }

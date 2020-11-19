@@ -1,9 +1,5 @@
 import de.vandermeer.asciitable.AsciiTable;
-import org.antlr.v4.tool.ast.PredAST;
-
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Vehiclepark {
@@ -14,7 +10,7 @@ public class Vehiclepark {
     public void addVehicle(String vehicleChoice) throws IOException {
         controller = new Controller();
         Vehicle vehicle = new Vehicle();
-        if (vehicleChoice == "car") {
+        if (vehicleChoice.equals("car")) {
             vehicle.setVehicleType(vehicleChoice);
             Vehicle car = addVehicleDefaultAttributes(vehicle);
 
@@ -27,7 +23,7 @@ public class Vehiclepark {
 
             vehicleContainer.addVehicles(car);
             fileHandler.writeToFile(vehicleContainer);
-        } else if (vehicleChoice == "motorcycle") {
+        } else if (vehicleChoice.equals("motorcycle")) {
             vehicle.setVehicleType(vehicleChoice);
             Vehicle motorcycle = addVehicleDefaultAttributes(vehicle);
 
@@ -36,18 +32,21 @@ public class Vehiclepark {
 
             vehicleContainer.addVehicles(motorcycle);
             fileHandler.writeToFile(vehicleContainer);
-        } else {
+        } else if (vehicleChoice.equals("van")) {
             vehicle.setVehicleType(vehicleChoice);
             Vehicle van = addVehicleDefaultAttributes(vehicle);
 
             vehicleContainer.addVehicles(van);
             fileHandler.writeToFile(vehicleContainer);
+        } else {
+            System.out.println("fehler");
         }
         System.out.println("fahrzeug hinzugefügt");
         controller.vehicleSubMenu();
     }
 
-    public void printVehicles() throws IOException {
+    public void printVehicles() {
+        controller = new Controller();
         List<Vehicle> vehicles = vehicleContainer.getVehicles();
         AsciiTable asciiTable = new AsciiTable();
         asciiTable.getContext().setWidth(380);
@@ -71,7 +70,7 @@ public class Vehiclepark {
                 "Tankvolumen",
                 "Ladegewicht");
         for (int i = 0; i < vehicles.size(); i++) {
-            int index = i+1;
+            int index = i + 1;
             asciiTable.addRule();
             asciiTable.addRow(index,
                     vehicles.get(i).getVehicleType(),
@@ -102,13 +101,27 @@ public class Vehiclepark {
         System.out.println("Modell:");
         vehicle.setModel(controller.readLine());
         System.out.println("Hubraum:");
-        vehicle.setDisplacement(Integer.parseInt(controller.readLine()));
+        //check if input is Integer
+        Vehicle tmpvehicle = vehicle;
+        tmpvehicle = setDisplacementTryParse(tmpvehicle);
+        while (tmpvehicle == null) {
+            System.out.println("Fehler, bitte Zahl eingeben");
+            tmpvehicle = setDisplacementTryParse(vehicle);
+        }
+        vehicle = tmpvehicle;
         System.out.println("Treibstoffart:");
         vehicle.setFuelType(controller.readLine());
         System.out.println("Aussenfarbe:");
         vehicle.setColor(controller.readLine());
         System.out.println("Aktualler Km-Stand:");
-        vehicle.setMilage(Integer.parseInt(controller.readLine()));
+        //check if input is integer
+        tmpvehicle = vehicle;
+        tmpvehicle = setMilageTryParse(tmpvehicle);
+        while (tmpvehicle == null) {
+            System.out.println("Fehler, bitte Zahl eingeben");
+            tmpvehicle = setMilageTryParse(vehicle);
+        }
+        vehicle = tmpvehicle;
         System.out.println("Kennzeichen:");
         vehicle.setLicensePlate(controller.readLine());
         System.out.println("Kategorie:");
@@ -118,11 +131,7 @@ public class Vehiclepark {
         System.out.println("Verfügbar bis:");
         vehicle.setAvailableUntil(controller.readLine());
         System.out.println("Verfügbar (Ja/Nein):");
-        if (controller.readLine() == "Ja") {
-            vehicle.setAvailable("Ja");
-        } else {
-            vehicle.setAvailable("Nein");
-        }
+        vehicle.setAvailable(controller.readLine());
         return vehicle;
     }
 
@@ -133,29 +142,98 @@ public class Vehiclepark {
         int index = Integer.parseInt(controller.readLine().trim());
 
         List<Vehicle> vehicles = vehicleContainer.getVehicles();
-        Vehicle vehicle = vehicles.get(index-1);
-
+        Vehicle vehicle = vehicles.get(index - 1);
+        Vehicle tmpvehicle = vehicle;
         vehicle = addVehicleDefaultAttributes(vehicle);
-        if (vehicle.getVehicleType() == "car") {
-            vehicle = addVehicleDefaultAttributes(vehicle);
-
+        if (vehicle.getVehicleType().equals("car")) {
             System.out.println("Anzahl Koffer [2,3,4,5]:");
-            vehicle.setNumberBags(Integer.parseInt(controller.readLine()));
+            //check if input is integer
+            tmpvehicle = setNumberBagsTryParse(tmpvehicle);
+            while (tmpvehicle == null) {
+                System.out.println("Fehler, bitte Zahl eingeben");
+                tmpvehicle = setNumberBagsTryParse(tmpvehicle);
+            }
+            vehicle = tmpvehicle;
             System.out.println("Aufbau:");
             vehicle.setType(controller.readLine());
             System.out.println("hat navigation? (Ja/Nein)");
             vehicle.setHasNav(controller.readLine());
-        } else if (vehicle.getVehicleType() == "motorcycle") {
-            vehicle = addVehicleDefaultAttributes(vehicle);
-
+        } else if (vehicle.getVehicleType().equals("motorcycle")) {
             System.out.println("Tankvolumen:");
-            vehicle.setTankvolume(Integer.parseInt(controller.readLine()));
-        } else {
-            vehicle = addVehicleDefaultAttributes(vehicle);
-
+            //check if input is Integer
+            tmpvehicle = setTankvolumeTryParse(tmpvehicle);
+            while (tmpvehicle == null) {
+                System.out.println("Fehler, bitte Zahl eingeben");
+                tmpvehicle = setTankvolumeTryParse(tmpvehicle);
+            }
+            vehicle = tmpvehicle;
+        } else if (vehicle.getVehicleType().equals("van")) {
             System.out.println("Ladegewicht:");
-            vehicle.setLoadingWeight(Integer.parseInt(controller.readLine()));
+            //check if input is Integer
+            tmpvehicle = setLoadingWeightTryParse(tmpvehicle);
+            while (tmpvehicle == null) {
+                System.out.println("Fehler, bitte Zahl eingeben");
+                tmpvehicle = setLoadingWeightTryParse(tmpvehicle);
+            }
+            vehicle = tmpvehicle;
         }
-        
+        vehicles.set(index - 1, vehicle);
+        vehicleContainer.setVehicles(vehicles);
+        System.out.println("Fahrzeug hinzugefügt");
+        controller.vehicleSubMenu();
+    }
+
+    public boolean tryParseInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public Vehicle setDisplacementTryParse(Vehicle v) throws IOException {
+        String readline = controller.readLine();
+        if (tryParseInt(readline)) {
+            v.setDisplacement(Integer.parseInt(readline));
+            return v;
+        }
+        return null;
+    }
+
+    public Vehicle setMilageTryParse(Vehicle v) throws IOException {
+        String readline = controller.readLine();
+        if (tryParseInt(readline)) {
+            v.setMilage(Integer.parseInt(readline));
+            return v;
+        }
+        return null;
+    }
+
+    public Vehicle setNumberBagsTryParse(Vehicle v) throws IOException {
+        String readline = controller.readLine();
+        if (tryParseInt(readline)) {
+            v.setNumberBags(Integer.parseInt(readline));
+            return v;
+        }
+        return null;
+    }
+
+    public Vehicle setTankvolumeTryParse(Vehicle v) throws IOException {
+        String readline = controller.readLine();
+        if (tryParseInt(readline)) {
+            v.setTankvolume(Integer.parseInt(readline));
+            return v;
+        }
+        return null;
+    }
+
+    public Vehicle setLoadingWeightTryParse(Vehicle v) throws IOException {
+        String readline = controller.readLine();
+        if (tryParseInt(readline)) {
+            v.setLoadingWeight(Integer.parseInt(readline));
+            return v;
+        }
+        return null;
     }
 }

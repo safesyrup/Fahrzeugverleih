@@ -2,20 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleContainer {
-    private List<Vehicle> vehicles = new ArrayList<>();
-    private List<Customer> customers = new ArrayList<>();
-
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
-
-    public void addCustomer(Customer o) {
-        customers.add(o);
-    }
+    private static List<Vehicle> vehicles = new ArrayList<>();
 
     public List<Vehicle> getVehicles() {
         return vehicles;
