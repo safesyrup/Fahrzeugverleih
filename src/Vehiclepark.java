@@ -22,7 +22,7 @@ public class Vehiclepark {
             car.setHasNav(controller.readLine());
 
             vehicleContainer.addVehicles(car);
-            fileHandler.writeToFile(vehicleContainer);
+            fileHandler.writeToFileVehicles(vehicleContainer);
         } else if (vehicleChoice.equals("motorcycle")) {
             vehicle.setVehicleType(vehicleChoice);
             Vehicle motorcycle = addVehicleDefaultAttributes(vehicle);
@@ -31,13 +31,13 @@ public class Vehiclepark {
             motorcycle.setTankvolume(Integer.parseInt(controller.readLine()));
 
             vehicleContainer.addVehicles(motorcycle);
-            fileHandler.writeToFile(vehicleContainer);
+            fileHandler.writeToFileVehicles(vehicleContainer);
         } else if (vehicleChoice.equals("van")) {
             vehicle.setVehicleType(vehicleChoice);
             Vehicle van = addVehicleDefaultAttributes(vehicle);
 
             vehicleContainer.addVehicles(van);
-            fileHandler.writeToFile(vehicleContainer);
+            fileHandler.writeToFileVehicles(vehicleContainer);
         } else {
             System.out.println("fehler");
         }
@@ -137,10 +137,15 @@ public class Vehiclepark {
 
     public void editVehicle() throws IOException {
         controller = new Controller();
+        int index = 0;
+
         printVehicles();
         System.out.print("id des zu editierenden Fahrzeuges eingeben:");
-        int index = Integer.parseInt(controller.readLine().trim());
-
+        String input = controller.readLine();
+        while (!tryParseInt(input)) {
+            input = controller.readLine();
+        }
+        index = Integer.parseInt(input);
         List<Vehicle> vehicles = vehicleContainer.getVehicles();
         Vehicle vehicle = vehicles.get(index - 1);
         Vehicle tmpvehicle = vehicle;
@@ -179,7 +184,7 @@ public class Vehiclepark {
         }
         vehicles.set(index - 1, vehicle);
         vehicleContainer.setVehicles(vehicles);
-        System.out.println("Fahrzeug hinzugefügt");
+        System.out.println("Fahrzeug editiert");
         controller.vehicleSubMenu();
     }
 

@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 public class Controller {
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     Vehiclepark vehiclepark = new Vehiclepark();
+    CustomerController customerController = new CustomerController();
+    RentController rentController = new RentController();
 
     public String readLine() throws IOException {
         return reader.readLine();
@@ -16,7 +18,7 @@ public class Controller {
                 vehicleSubMenu();
                 break;
             case "2":
-                System.out.println("nunig fertig bro");
+                rentSubMenu();
                 break;
             default:
                 mainMenu();
@@ -62,8 +64,20 @@ public class Controller {
         }
     }
 
-    public void rentSubmenu() {
-
+    public void chooseRentSubmenu() throws IOException {
+        switch (readLine()) {
+            case "1":
+                customerController.addCustomer();
+                break;
+            case "2":
+                rentController.addRent();
+                break;
+            case "3":
+                rentController.editRent();
+            case "0":
+                mainMenu();
+                break;
+        }
     }
 
     public void mainMenu() throws IOException {
@@ -98,11 +112,13 @@ public class Controller {
         chooseAddVehicleSubMenu();
     }
 
-    public void rentSubMenu() {
+    public void rentSubMenu() throws IOException {
+        System.out.println("1 Nutzer hinzufügen");
+        System.out.println("2 Vermietung erfassen");
+        System.out.println("3 Vermietung ändern");
         System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("0 zurück");
+
+        chooseRentSubmenu();
     }
 }

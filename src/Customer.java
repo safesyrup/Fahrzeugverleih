@@ -8,7 +8,11 @@ public class Customer {
     String city;
     String phone;
     String mail;
-    Date dateOfBirth;
+    String dateOfBirth;
+
+    public Customer() {
+
+    }
 
     public String getName() {
         return name;
@@ -66,11 +70,11 @@ public class Customer {
         this.mail = mail;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

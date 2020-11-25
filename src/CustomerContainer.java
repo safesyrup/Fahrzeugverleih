@@ -2,9 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerContainer {
+
+    public CustomerContainer() {
+    }
+
     private static List<Customer> customers = new ArrayList<>();
 
-    public static List<Customer> getCustomers() {
+    public List<Customer> getCustomers() {
         return customers;
     }
 

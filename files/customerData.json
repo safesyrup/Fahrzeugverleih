@@ -1,0 +1,14 @@
+{
+  "customers": [
+    {
+      "name": "asdf",
+      "surname": "asdf",
+      "street": "asdfa",
+      "plz": "sdf",
+      "city": "asdf",
+      "phone": "asdf",
+      "mail": "asdf",
+      "dateOfBirth": "asdf"
+    }
+  ]
+}
