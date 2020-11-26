@@ -37,6 +37,25 @@
       "loadingWeight": 0,
       "type": null,
       "tankvolume": 10
+    },
+    {
+      "vehicleType": "van",
+      "brand": "Renault",
+      "model": "Energy dCi 180",
+      "displacement": 2800,
+      "fuelType": "Diesel",
+      "color": "Weiss",
+      "milage": 0,
+      "licensePlate": "3",
+      "category": "Medium",
+      "availableFrom": "01.01.2021",
+      "availableUntil": "10.01.2021",
+      "isAvailable": "Ja",
+      "numberBags": 0,
+      "hasNav": null,
+      "loadingWeight": 0,
+      "type": null,
+      "tankvolume": 0
     }
   ]
 }

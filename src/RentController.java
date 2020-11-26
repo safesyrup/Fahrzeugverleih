@@ -15,7 +15,7 @@ public class RentController {
         vehiclepark = new Vehiclepark();
         controller = new Controller();
         Vehicle v;
-        int price;
+        Integer price;
         customerController = new CustomerController();
         Customer c;
 
@@ -33,7 +33,7 @@ public class RentController {
         System.out.println("Preis:");
         //check if price is int
         price = setPriceTryParse();
-        while (price == 0) {
+        while (price == null) {
             System.out.println("Fehler, bitte Zahl eingeben:");
             price = setPriceTryParse();
         }
@@ -53,6 +53,7 @@ public class RentController {
         RentContainer.addRent(rent);
         fileHandler.writeToFileRents(rentContainer);
         System.out.println("Vermietung Hinzugefügt");
+        controller.rentSubMenu();
     }
 
     public void editRent() throws IOException {
@@ -85,6 +86,7 @@ public class RentController {
         rent.setStatus(controller.readLine());
 
         rentContainer.getRents().set(index, rent);
+        fileHandler.writeToFileRents(rentContainer);
         System.out.println("Vermietung editiert");
         controller.rentSubMenu();
     }
@@ -93,7 +95,7 @@ public class RentController {
         controller = new Controller();
         List<Rent> rents = rentContainer.getRents();
         AsciiTable asciiTable = new AsciiTable();
-        asciiTable.getContext().setWidth(250);
+        asciiTable.getContext().setWidth(200);
         asciiTable.addRule();
         asciiTable.addRow("id",
                 "Fahrzeugmarke",
@@ -114,10 +116,35 @@ public class RentController {
                     rents.get(i).getPrice(),
                     rents.get(i).getStatus(),
                     rents.get(i).getCustomer().getName(),
-                    rents.get(i).getCustomer().getSurname());
+                    rents.get(i).getCustomer().getSurname(),
+                    rents.get(i).getCustomer().getMail());
         }
         String string = asciiTable.render();
         System.out.println(string);
+    }
+
+    public void changeStatus() throws IOException {
+        controller = new Controller();
+        Integer index;
+        Rent rent;
+
+        System.out.println("ID des Verleihs wessen Status geändert werden soll:");
+        printRents();
+        //check if id is int
+        index = getIndexTryParse();
+        while (index == null) {
+            System.out.println("Fehler, bitte Zahl eingeben:");
+            index = getIndexTryParse();
+        }
+        index = index - 1;
+        rent = rentContainer.getRents().get(index);
+        System.out.println("Status der Vermietung:");
+        rent.setStatus(controller.readLine());
+
+        rentContainer.getRents().set(index, rent);
+        fileHandler.writeToFileRents(rentContainer);
+        System.out.println("Status editiert");
+        controller.rentSubMenu();
     }
 
     public boolean tryParseInt(String input) {

@@ -1,14 +1,34 @@
 {
   "customers": [
     {
-      "name": "asdf",
-      "surname": "asdf",
-      "street": "asdfa",
-      "plz": "sdf",
-      "city": "asdf",
-      "phone": "asdf",
-      "mail": "asdf",
-      "dateOfBirth": "asdf"
+      "name": "Fabio",
+      "surname": "Zahner",
+      "street": "Starrbergstrasse 18",
+      "plz": "8717",
+      "city": "Benken",
+      "phone": "079 666 69 69",
+      "mail": "fabio.zahner@bwz-rappi.ch",
+      "dateOfBirth": "23.05.2002"
+    },
+    {
+      "name": "Doriano",
+      "surname": "Di Pierro",
+      "street": "Schlattstrasse 3",
+      "plz": "8725",
+      "city": "Ernetschwil",
+      "phone": "077 420 96 96",
+      "mail": "doriano.dipierro@bwz-rappi.ch",
+      "dateOfBirth": "28.09.2002"
+    },
+    {
+      "name": "Remo",
+      "surname": "Steiner",
+      "street": "Ottenhofenstrasse 67",
+      "plz": "8738",
+      "city": "Üetliburg",
+      "phone": "076 420 69 69",
+      "mail": "remo.steiner@bwz-rappi.ch",
+      "dateOfBirth": "02.05.2003"
     }
   ]
 }

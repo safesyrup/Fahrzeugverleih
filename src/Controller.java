@@ -38,6 +38,9 @@ public class Controller {
             case "3":
                 vehiclepark.editVehicle();
                 break;
+            case "4":
+                vehiclepark.searchVehicle();
+                break;
             case "0":
                 mainMenu();
                 break;
@@ -61,6 +64,9 @@ public class Controller {
             case "0":
                 addVehicleSubMenu();
                 break;
+            default:
+                addVehicleSubMenu();
+                break;
         }
     }
 
@@ -74,8 +80,19 @@ public class Controller {
                 break;
             case "3":
                 rentController.editRent();
+                break;
+            case "4":
+                rentController.changeStatus();
+                break;
+            case "5":
+                rentController.printRents();
+                rentSubMenu();
+                break;
             case "0":
                 mainMenu();
+                break;
+            default:
+                rentSubMenu();
                 break;
         }
     }
@@ -97,6 +114,7 @@ public class Controller {
         System.out.println("1 Fahrzeuge ansehen");
         System.out.println("2 Fahrzeuge hinzufügen");
         System.out.println("3 Fahrzeuge editieren");
+        System.out.println("4 Fahrzeug suchen");
         System.out.println("0 zurück");
 
         chooseVehicleSubMenu();
@@ -116,7 +134,8 @@ public class Controller {
         System.out.println("1 Nutzer hinzufügen");
         System.out.println("2 Vermietung erfassen");
         System.out.println("3 Vermietung ändern");
-        System.out.println("");
+        System.out.println("4 Status ändern");
+        System.out.println("5 Vermietungen ansehen");
         System.out.println("0 zurück");
 
         chooseRentSubmenu();
