@@ -1,6 +1,8 @@
 import de.vandermeer.asciitable.AsciiTable;
 
+import javax.annotation.processing.RoundEnvironment;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RentController {
@@ -59,6 +61,7 @@ public class RentController {
     public void editRent() throws IOException {
         controller = new Controller();
         Rent rent;
+        List<Rent> rents = rentContainer.getRents();
         Integer price;
         Integer index;
 
@@ -70,7 +73,7 @@ public class RentController {
             System.out.println("Fehler, bitte Zahl eingeben:");
             index = getIndexTryParse();
         }
-        index = index - 1;
+        index = index-1;
         rent = rentContainer.getRents().get(index);
         System.out.println("Mietdauer:");
         rent.setRentDuration(controller.readLine());
@@ -85,7 +88,9 @@ public class RentController {
         System.out.println("Status:");
         rent.setStatus(controller.readLine());
 
-        rentContainer.getRents().set(index, rent);
+        rents.set(index, rent);
+
+        RentContainer.setRents(rents);
         fileHandler.writeToFileRents(rentContainer);
         System.out.println("Vermietung editiert");
         controller.rentSubMenu();
@@ -127,6 +132,7 @@ public class RentController {
         controller = new Controller();
         Integer index;
         Rent rent;
+        List<Rent> rents = rentContainer.getRents();
 
         System.out.println("ID des Verleihs wessen Status geändert werden soll:");
         printRents();
@@ -141,7 +147,9 @@ public class RentController {
         System.out.println("Status der Vermietung:");
         rent.setStatus(controller.readLine());
 
-        rentContainer.getRents().set(index, rent);
+        rents.set(index, rent);
+
+        RentContainer.setRents(rents);
         fileHandler.writeToFileRents(rentContainer);
         System.out.println("Status editiert");
         controller.rentSubMenu();

@@ -32,7 +32,7 @@ public class CustomerController {
         System.out.println("Geburtsdatum");
         customer.setDateOfBirth(controller.readLine());
 
-        new CustomerContainer().getCustomers().add(customer);
+        new CustomerContainer().addCustomer(customer);
         fileHandler.writeToFileCustomers(customerContainer);
         controller.rentSubMenu();
     }

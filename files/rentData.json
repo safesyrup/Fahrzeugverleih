@@ -1,4 +1,1 @@
-{
-  "rents": [
-  ]
-}
+{"rents":[{"vehicle":{"vehicleType":"car","brand":"Benz","model":"AMG","displacement":2600,"fuelType":"Benzin","color":"Weiss","milage":2566,"licensePlate":"CH-25663","category":"Luxus","availableFrom":"12.30.2020","availableUntil":"12.30.2020","isAvailable":"Nein","numberBags":3,"hasNav":"Nein","loadingWeight":0,"type":"Kleinwagen","tankvolume":0},"rentDuration":"5 Tage","price":200,"status":"bezahlt","customer":{"name":"Fabio","surname":"Zahner","street":"Starrbergstrasse 18","plz":"8717","city":"Benken","phone":"079 666 69 69","mail":"fabio.zahner@bwz-rappi.ch","dateOfBirth":"23.05.2002"}}]}

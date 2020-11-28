@@ -166,7 +166,7 @@ public class Vehiclepark {
 
     public void editVehicle() throws IOException {
         controller = new Controller();
-        int index = 0;
+        int index;
 
         printVehicles();
         System.out.print("id des zu editierenden Fahrzeuges eingeben:");
@@ -213,6 +213,7 @@ public class Vehiclepark {
         }
         vehicles.set(index - 1, vehicle);
         vehicleContainer.setVehicles(vehicles);
+        new FileHandler().writeToFileVehicles(vehicleContainer);
         System.out.println("Fahrzeug editiert");
         controller.vehicleSubMenu();
     }

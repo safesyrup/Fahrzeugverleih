@@ -15,4 +15,8 @@ public class CustomerContainer {
     public static void setCustomers(List<Customer> customers) {
         CustomerContainer.customers = customers;
     }
+
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
 }
