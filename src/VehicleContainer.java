@@ -9,10 +9,10 @@ public class VehicleContainer {
     }
 
     public void setVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+        VehicleContainer.vehicles = vehicles;
     }
 
-    public void addVehicles(Vehicle o) {
-        vehicles.add(o);
+    public void addVehicles(Vehicle v) {
+        vehicles.add(v);
     }
 }
