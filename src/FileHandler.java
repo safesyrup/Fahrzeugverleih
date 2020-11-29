@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileHandler {
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public void writeToFileVehicles(VehicleContainer v) throws IOException {
         objectMapper.writeValue(new File("files/vehicleData.json"), v);

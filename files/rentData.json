@@ -1,1 +1,106 @@
-{"rents":[{"vehicle":{"vehicleType":"car","brand":"Benz","model":"AMG","displacement":2600,"fuelType":"Benzin","color":"Weiss","milage":2566,"licensePlate":"CH-25663","category":"Luxus","availableFrom":"12.30.2020","availableUntil":"12.30.2020","isAvailable":"Nein","numberBags":3,"hasNav":"Nein","loadingWeight":0,"type":"Kleinwagen","tankvolume":0},"rentDuration":"5 Tage","price":200,"status":"bezahlt","customer":{"name":"Fabio","surname":"Zahner","street":"Starrbergstrasse 18","plz":"8717","city":"Benken","phone":"079 666 69 69","mail":"fabio.zahner@bwz-rappi.ch","dateOfBirth":"23.05.2002"}}]}
+{
+  "rents": [
+    {
+      "vehicle": {
+        "vehicleType": "car",
+        "brand": "Benz",
+        "model": "AMG",
+        "displacement": 2600,
+        "fuelType": "Benzin",
+        "color": "Weiss",
+        "milage": 2566,
+        "licensePlate": "CH-25663",
+        "category": "Luxus",
+        "availableFrom": "12.30.2020",
+        "availableUntil": "12.30.2020",
+        "isAvailable": "Nein",
+        "numberBags": 3,
+        "hasNav": "Nein",
+        "loadingWeight": 0,
+        "type": "Kleinwagen",
+        "tankvolume": 0
+      },
+      "rentDuration": "5 Tage",
+      "price": 200,
+      "status": "bezahlt",
+      "customer": {
+        "name": "Fabio",
+        "surname": "Zahner",
+        "street": "Starrbergstrasse 18",
+        "plz": "8717",
+        "city": "Benken",
+        "phone": "079 666 69 69",
+        "mail": "fabio.zahner@bwz-rappi.ch",
+        "dateOfBirth": "23.05.2002"
+      }
+    },
+    {
+      "vehicle": {
+        "vehicleType": "motorcycle",
+        "brand": "Kawasaki",
+        "model": "Ninja 400",
+        "displacement": 399,
+        "fuelType": "Kerosin",
+        "color": "Grün",
+        "milage": 0,
+        "licensePlate": "2",
+        "category": "Luxus",
+        "availableFrom": "2",
+        "availableUntil": "3",
+        "isAvailable": "Ja",
+        "numberBags": 0,
+        "hasNav": null,
+        "loadingWeight": 0,
+        "type": null,
+        "tankvolume": 10
+      },
+      "rentDuration": "10 Tage",
+      "price": 300,
+      "status": "offen",
+      "customer": {
+        "name": "Doriano",
+        "surname": "Di Pierro",
+        "street": "Schlattstrasse 3",
+        "plz": "8725",
+        "city": "Ernetschwil",
+        "phone": "077 420 96 96",
+        "mail": "doriano.dipierro@bwz-rappi.ch",
+        "dateOfBirth": "28.09.2002"
+      }
+    },
+    {
+      "vehicle": {
+        "vehicleType": "van",
+        "brand": "Renault",
+        "model": "Energy dCi 180",
+        "displacement": 2800,
+        "fuelType": "Diesel",
+        "color": "Weiss",
+        "milage": 0,
+        "licensePlate": "3",
+        "category": "Medium",
+        "availableFrom": "01.01.2021",
+        "availableUntil": "10.01.2021",
+        "isAvailable": "Ja",
+        "numberBags": 0,
+        "hasNav": null,
+        "loadingWeight": 0,
+        "type": null,
+        "tankvolume": 0
+      },
+      "rentDuration": "2 Tage",
+      "price": 50,
+      "status": "bezahlt",
+      "customer": {
+        "name": "Remo",
+        "surname": "Steiner",
+        "street": "Ottenhofenstrasse 67",
+        "plz": "8738",
+        "city": "Üetliburg",
+        "phone": "076 420 69 69",
+        "mail": "remo.steiner@bwz-rappi.ch",
+        "dateOfBirth": "02.05.2003"
+      }
+    }
+  ]
+}
